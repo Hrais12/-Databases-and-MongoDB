@@ -1,7 +1,7 @@
 const Drink = require('../models/drinks')
 
 
-const allDrinks = async(res,req)=>{
+const allDrinks = async(req,res)=>{
    const drinks = await Drink.find();
     res.json({drinks: drinks})
 }

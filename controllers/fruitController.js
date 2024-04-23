@@ -1,16 +1,17 @@
 const Fruit = require('../models/fruits')
 
 
-const allFruits = async(res,req)=>{
+const allFruits = async(req,res)=>{
    const fruits = await Fruit.find();
+
     res.json({fruits: fruits})
-}
+};
 
 
 const fetchFruit = async (req, res) => {
     const fruitId = req.params.id;
    
-    const fruit= await fruit.findById(fruitId);
+    const fruit= await Fruit.findById(fruitId);
    
     res.json({ fruit: fruit });
     
@@ -20,8 +21,8 @@ const fetchFruit = async (req, res) => {
   const createFruit = async (req, res) => {
     
     console.log(`BODY: ${req.body}`);
-    const title = req.body.name;
-    const body = req.body.inventury;
+    const name = req.body.name;
+    const inventury = req.body.inventury;
     // const {title,body} = req.body
     
     const fruit= await Fruit.create({
@@ -43,6 +44,8 @@ const fetchFruit = async (req, res) => {
       name: name,
       inventury: inventury,
     }, {new:true});
+
+    res.json({ fruit: fruit });
    
    
   };
